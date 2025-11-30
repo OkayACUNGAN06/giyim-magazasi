@@ -1,0 +1,182 @@
+/* --- GENEL AYARLAR --- */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; color: #333; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+button { cursor: pointer; font-family: inherit; transition: 0.2s; }
+input { outline: none; transition: 0.3s; }
+
+/* --- NAVBAR --- */
+nav {
+  background: #2c3e50;
+  padding: 0 40px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo a { font-size: 1.5rem; font-weight: 700; color: #fff; }
+.logo a:hover { color: #f1c40f; }
+
+.search-bar input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  width: 300px;
+  background: #34495e;
+  color: white;
+}
+.search-bar input::placeholder { color: #ccc; }
+.search-bar input:focus { background: white; color: #333; width: 320px; }
+
+.menu { display: flex; align-items: center; gap: 20px; }
+.menu a { font-size: 0.95rem; color: #ecf0f1; font-weight: 500; }
+.menu a:hover { color: #3498db; }
+.logout-btn { background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; }
+.logout-btn:hover { background: #c0392b; }
+.tab-btn-admin {background: #f1c40f; color: black; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; margin-right: 5px;}
+
+/* --- LAYOUT & GRID --- */
+.container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* --- KART TASARIMI (VİTRİN) --- */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+.card img { width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid #eee; }
+.card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.card-body h3 { margin: 0 0 10px 0; font-size: 1.1rem; color: #2c3e50; }
+.price { color: #27ae60; font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; }
+
+.buy-btn {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+}
+.buy-btn:hover { background: #34495e; }
+
+/* --- GİRİŞ / KAYIT SAYFALARI --- */
+.auth-container {
+  max-width: 450px;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.auth-container h2 { margin-bottom: 30px; color: #2c3e50; }
+
+/* --- ADMIN PANELİ ÖZEL --- */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+/* Sekme Butonları */
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+}
+.tab-btn:hover { color: #34495e; }
+.tab-btn.active {
+  color: #3498db;
+  border-bottom: 3px solid #3498db;
+}
+
+/* Admin Form Alanı */
+.admin-form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+.admin-form { display: flex; flex-direction: column; gap: 20px; }
+.admin-form input {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.admin-form input:focus { border-color: #3498db; }
+
+.save-btn { background: #27ae60; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; }
+.save-btn:hover { background: #219150; }
+
+/* Admin Tablosu */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.admin-table th { background: #34495e; color: white; padding: 15px; text-align: left; }
+.admin-table td { padding: 15px; border-bottom: 1px solid #f1f1f1; vertical-align: middle; }
+.admin-table tr:last-child td { border-bottom: none; }
+
+/* Rol Rozetleri (Admin/User) */
+.badge-admin { background: #9b59b6; color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 0.5px; }
+.badge-user { background: #95a5a6; color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; letter-spacing: 0.5px; }
+
+/* Aksiyon Butonları */
+.edit-action { background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-right: 5px; }
+.delete-action { background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { height: auto; flex-direction: column; padding: 20px; gap: 20px; }
+  .search-bar input { width: 100%; }
+  .menu { flex-wrap: wrap; justify-content: center; }
+}
+
+/* Ürün Detay Sayfası Tasarımı */
+.detail-container { display: flex; gap: 40px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-top: 30px; }
+.detail-left { flex: 1; }
+.detail-left img { width: 100%; border-radius: 10px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.detail-right { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.detail-right h1 { margin-top: 0; color: #2c3e50; font-size: 2.2rem; }
+.detail-price { font-size: 2rem; color: #27ae60; font-weight: bold; margin: 15px 0; }
+.detail-desc { line-height: 1.6; color: #666; margin-bottom: 30px; font-size: 1.1rem; }
+.big-btn { padding: 15px 40px; font-size: 1.1rem; width: auto; align-self: flex-start; }
+
+/* Sepet Sayfası Tasarımı */
+.cart-list { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #eee; }
+.cart-item:last-child { border-bottom: none; }
+.cart-info { display: flex; align-items: center; gap: 20px; }
+.cart-info img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+.cart-info h4 { margin: 0; font-size: 1.1rem; color: #2c3e50; }
+.cart-total { text-align: right; margin-top: 25px; padding-top: 25px; border-top: 2px solid #eee; }
+.cart-total h3 { font-size: 1.5rem; color: #2c3e50; }
